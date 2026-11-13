@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="logo/afterself_logo_512.png" alt="Afterself logo: a screaming Steve face" width="220">
 
 # Afterself
 
