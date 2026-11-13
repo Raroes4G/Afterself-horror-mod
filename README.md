@@ -1,6 +1,5 @@
 <div align="center">
 
-
 # Afterself
 
 **Every death leaves a soul behind.**
