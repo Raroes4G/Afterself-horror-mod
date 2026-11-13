@@ -1,0 +1,40 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "GPL-3.0-only"
+
+[[mods]]
+modId = "afterself"
+version = "${version}"
+displayName = "Afterself"
+authors = "Wael Rayane Azzarradi"
+description = "Every death leaves a soul behind. At night it comes back with your face and your voice, to haunt you, rob you and take your place. Requires Simple Voice Chat and GeckoLib."
+logoFile = "afterself_logo.png"
+logoBlur = false
+
+[[dependencies.afterself]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.afterself]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,1.21.2)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.afterself]]
+modId = "voicechat"
+type = "required"
+versionRange = "*"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.afterself]]
+modId = "geckolib"
+type = "required"
+versionRange = "[4.5,5)"
+ordering = "NONE"
+side = "BOTH"

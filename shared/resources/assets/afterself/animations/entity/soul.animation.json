@@ -1,0 +1,672 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "idle": {
+      "loop": true,
+      "animation_length": 4,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            0,
+            0,
+            "math.sin(query.anim_time * 90) * 2 + 2"
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            0,
+            0,
+            "0 - math.sin(query.anim_time * 90) * 2 - 2"
+          ]
+        }
+      }
+    },
+    "walk": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "rightLeg": {
+          "rotation": [
+            "math.cos(query.anim_time * 360) * 30",
+            0,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            "0 - math.cos(query.anim_time * 360) * 30",
+            0,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            "0 - math.cos(query.anim_time * 360) * 25",
+            0,
+            0
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "math.cos(query.anim_time * 360) * 25",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "sprint": {
+      "loop": true,
+      "animation_length": 0.6,
+      "bones": {
+        "body": {
+          "rotation": [
+            8,
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            "math.cos(query.anim_time * 600) * 50",
+            0,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            "0 - math.cos(query.anim_time * 600) * 50",
+            0,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            "0 - math.cos(query.anim_time * 600) * 50",
+            0,
+            0
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "math.cos(query.anim_time * 600) * 50",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "crouch": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "body": {
+          "rotation": [
+            2.5,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            -3
+          ]
+        },
+        "head": {
+          "rotation": [
+            0,
+            0,
+            1
+          ],
+          "position": [
+            0,
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "position": [
+            0,
+            8,
+            -7
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            90,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            -2,
+            -6
+          ]
+        },
+        "root": {
+          "position": [
+            0,
+            -8,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            0
+          ]
+        },
+        "leftArm": {
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "crouch_walk": {
+      "loop": true,
+      "animation_length": 1.4,
+      "bones": {
+        "body": {
+          "rotation": [
+            28,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            -2,
+            -9
+          ]
+        },
+        "head": {
+          "rotation": [
+            -28,
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            "math.cos(query.anim_time * 257) * 18",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            -3
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            "0 - math.cos(query.anim_time * 257) * 18",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            -3
+          ]
+        }
+      }
+    },
+    "attack": {
+      "loop": false,
+      "animation_length": 0.3,
+      "bones": {
+        "rightArm": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              -110,
+              0,
+              10
+            ],
+            "0.3": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "lure_wave": {
+      "loop": true,
+      "animation_length": 1.5,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            0,
+            0,
+            "150 + math.sin(query.anim_time * 480) * 20"
+          ],
+          "position": [
+            -3,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            0,
+            "math.sin(query.anim_time * 120) * 6",
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "lure_kneel": {
+      "loop": true,
+      "animation_length": 3,
+      "bones": {
+        "root": {
+          "position": [
+            0,
+            -6,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            "20 + math.sin(query.anim_time * 240) * 2",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            2,
+            -6
+          ]
+        },
+        "head": {
+          "rotation": [
+            "47.5 + math.sin(query.anim_time * 240) * 3",
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            -90,
+            7.5,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            -90,
+            -7.5,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            -28.6762,
+            -3.974,
+            -2.8604
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            -37.8634,
+            -4.8278,
+            9.9173
+          ]
+        }
+      }
+    },
+    "lure_lie": {
+      "loop": true,
+      "animation_length": 6,
+      "bones": {
+        "root": {
+          "rotation": [
+            -90,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            2,
+            -15
+          ]
+        },
+        "head": {
+          "rotation": [
+            5.0047,
+            "2.4905+math.sin(query.anim_time * 30) * 4",
+            0.218
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            0,
+            -12.5,
+            -17.5
+          ],
+          "position": [
+            1,
+            -2,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            0,
+            22.5,
+            32.5
+          ],
+          "position": [
+            -1,
+            -2,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            0,
+            0,
+            20
+          ],
+          "position": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            0,
+            -27.5,
+            -12.5
+          ]
+        }
+      }
+    },
+    "lure_stare": {
+      "loop": true,
+      "animation_length": 5,
+      "bones": {
+        "head": {
+          "rotation": [
+            8,
+            0,
+            "math.sin(query.anim_time * 72) * 14"
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            0,
+            0,
+            3
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            0,
+            0,
+            -3
+          ]
+        }
+      }
+    },
+    "lure_beckon": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "0 - 80 - math.sin(query.anim_time * 360) * 25",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            0,
+            0,
+            6
+          ]
+        }
+      }
+    },
+    "lure_cry": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "root": {
+          "position": [
+            0,
+            -10,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            "25 + math.sin(query.anim_time * 1440) * 1.5",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            -7
+          ]
+        },
+        "head": {
+          "rotation": [
+            "40 + math.sin(query.anim_time * 1440) * 2",
+            0,
+            0
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            -104.9178,
+            -21.4021,
+            2.5303
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            -106.7732,
+            27.7411,
+            -12.0524
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            -89.9131,
+            10,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            -89.9131,
+            -10,
+            0
+          ]
+        }
+      }
+    },
+    "lure_back": {
+      "loop": true,
+      "animation_length": 9,
+      "bones": {
+        "body": {
+          "rotation": [
+            4,
+            0,
+            "math.sin(query.anim_time * 40) * 2"
+          ]
+        },
+        "head": {
+          "rotation": [
+            18,
+            0,
+            "math.sin(query.anim_time * 40) * 3"
+          ]
+        }
+      }
+    },
+    "watch": {
+      "loop": true,
+      "animation_length": 6,
+      "bones": {
+        "head": {
+          "rotation": [
+            0,
+            0,
+            "18 + math.sin(query.anim_time * 60) * 4"
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            0,
+            0,
+            4
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            0,
+            0,
+            -4
+          ]
+        }
+      }
+    },
+    "loom": {
+      "loop": true,
+      "animation_length": 7.2,
+      "bones": {
+        "body": {
+          "rotation": [
+            18,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            -3
+          ]
+        },
+        "head": {
+          "rotation": [
+            -10,
+            0,
+            "math.sin(query.anim_time * 50) * 6"
+          ]
+        },
+        "rightArm": {
+          "rotation": [
+            -25,
+            0,
+            6
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            -25,
+            0,
+            -6
+          ]
+        }
+      }
+    },
+    "search": {
+      "loop": true,
+      "animation_length": 4,
+      "bones": {
+        "body": {
+          "rotation": [
+            0,
+            "math.sin(query.anim_time * 90) * 12",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            5,
+            "math.sin(query.anim_time * 90) * 55",
+            0
+          ]
+        }
+      }
+    },
+    "eat": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "0 - 95 - math.sin(query.anim_time * 1080) * 8",
+            -25,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            10,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "guard": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "leftArm": {
+          "rotation": [
+            -54,
+            30,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

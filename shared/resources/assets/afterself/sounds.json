@@ -1,0 +1,50 @@
+{
+  "screamer": {
+    "sounds": [
+      {
+        "name": "afterself:screamer",
+        "stream": false
+      }
+    ]
+  },
+  "screamer_steps": {
+    "sounds": [
+      {
+        "name": "afterself:screamer_steps",
+        "stream": false
+      }
+    ]
+  },
+  "screamer_eyes": {
+    "sounds": [
+      {
+        "name": "afterself:screamer_eyes",
+        "stream": false
+      }
+    ]
+  },
+  "screamer_fall": {
+    "sounds": [
+      {
+        "name": "afterself:screamer_fall",
+        "stream": false
+      }
+    ]
+  },
+  "screamer_crowd": {
+    "sounds": [
+      {
+        "name": "afterself:screamer_crowd",
+        "stream": false
+      }
+    ]
+  },
+  "screamer_slow": {
+    "sounds": [
+      {
+        "name": "afterself:screamer_slow",
+        "stream": false
+      }
+    ]
+  }
+}

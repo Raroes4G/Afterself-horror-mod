@@ -1,0 +1,16 @@
+# Text files are stored with LF line endings
+* text=auto eol=lf
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix scripts must keep LF, or they break on Linux and macOS
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Binary files
+*.jar binary
+*.png binary
+*.ogg binary
+*.wav binary

@@ -1,0 +1,15 @@
+name: Idea
+description: Suggest a new scare, behaviour or setting.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should the souls do, and when?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it would be scary or fun

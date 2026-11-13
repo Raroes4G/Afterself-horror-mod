@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev'
+}
+
+group = 'com.afterself'
+version = mod_version
+
+base {
+    archivesName = "afterself-neoforge-${minecraft_version}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.maxhenkel.de/repository/public' }
+    maven {
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content { includeGroupAndSubgroups('software.bernie') }
+    }
+    exclusiveContent {
+        forRepository { maven { url = 'https://api.modrinth.com/maven' } }
+        filter { includeGroup('maven.modrinth') }
+    }
+}
+
+sourceSets.main.java.srcDir '../../shared/java'
+sourceSets.main.java.srcDir '../src/java'
+sourceSets.main.resources.srcDir '../../shared/resources'
+sourceSets.main.resources.srcDir '../src/resources'
+
+neoForge {
+    version = neoforge_version
+    runs {
+        client { client() }
+        server { server() }
+    }
+    // The final-jar test loads the mod from the mods folder instead.
+    if (!project.hasProperty('afterselfFinalJar')) {
+        mods {
+            afterself { sourceSet sourceSets.main }
+        }
+    }
+}
+
+dependencies {
+    compileOnly "de.maxhenkel.voicechat:voicechat-api:${voicechat_api_version}"
+    implementation "software.bernie.geckolib:geckolib-neoforge-${geckolib_mc}:${geckolib_version}"
+    if (!project.hasProperty('afterselfFinalJar')) {
+        runtimeOnly "maven.modrinth:simple-voice-chat:${voicechat_runtime_neoforge}"
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Final-jar test: only the game, the released jar comes from the mods folder.
+if (project.hasProperty('afterselfFinalJar')) {
+    sourceSets.main.java.setSrcDirs([])
+    sourceSets.main.resources.setSrcDirs([])
+}
+
+// Dev-only test client: never part of a release build.
+if (project.hasProperty('afterselfTest')) {
+    sourceSets.main.java.srcDir '../../testharness/shared'
+    sourceSets.main.java.srcDir '../../testharness/neoforge-121'
+}
+
+// The version in the mod list is the one in gradle.properties.
+processResources {
+    inputs.property 'version', mod_version
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
+        expand version: mod_version
+    }
+}

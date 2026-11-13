@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev.legacyforge' version '2.0.77'
+}
+
+group = 'com.afterself'
+version = mod_version
+
+base {
+    archivesName = "afterself-${minecraft_version}-forge"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.maxhenkel.de/repository/public' }
+    maven {
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content { includeGroupAndSubgroups('software.bernie') }
+    }
+    exclusiveContent {
+        forRepository { maven { url = 'https://api.modrinth.com/maven' } }
+        filter { includeGroup('maven.modrinth') }
+    }
+}
+
+sourceSets.main.java.srcDir '../shared/java'
+sourceSets.main.resources.srcDir '../shared/resources'
+
+legacyForge {
+    version = "${minecraft_version}-${forge_version}"
+    runs {
+        client { client() }
+        server { server() }
+    }
+    mods {
+        afterself { sourceSet sourceSets.main }
+    }
+}
+
+dependencies {
+    compileOnly "de.maxhenkel.voicechat:voicechat-api:${voicechat_api_version}"
+    modRuntimeOnly "maven.modrinth:simple-voice-chat:${voicechat_runtime}"
+    modImplementation "software.bernie.geckolib:geckolib-forge-1.19:${geckolib_version}"
+}
+
+jar {
+    finalizedBy('reobfJar')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Dev-only test client: never part of a release build.
+if (project.hasProperty('afterselfTest')) {
+    sourceSets.main.java.srcDir '../testharness/shared'
+    sourceSets.main.java.srcDir '../testharness/forge-phase'
+}
+
+// The version in the mod list is the one in gradle.properties.
+processResources {
+    inputs.property 'version', mod_version
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
+        expand version: mod_version
+    }
+}

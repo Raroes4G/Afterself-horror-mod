@@ -1,0 +1,65 @@
+name: Bug report
+description: Something in Afterself does not work as it should.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: minecraft
+    attributes:
+      label: Minecraft version
+      options:
+        - "1.19.2"
+        - "1.20.1"
+        - "1.21"
+        - "1.21.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Loader
+      options:
+        - Forge
+        - NeoForge
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions of Afterself, Simple Voice Chat and GeckoLib
+      placeholder: "Afterself 0.4.0, Voice Chat 2.6.27, GeckoLib 4.8.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: side
+    attributes:
+      label: Where does it happen?
+      options:
+        - Singleplayer
+        - Multiplayer (dedicated server)
+        - Multiplayer (LAN)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen again
+      description: The `/afterself debug` commands can help, for example `/afterself debug spawn` then `/afterself debug lure wave`.
+      placeholder: |
+        1. ...
+        2. ...
+  - type: textarea
+    id: log
+    attributes:
+      label: Log or crash report
+      description: Paste `logs/latest.log`, or the file in `crash-reports/`, or a link to it (mclo.gs, gist).
+      render: text
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods installed

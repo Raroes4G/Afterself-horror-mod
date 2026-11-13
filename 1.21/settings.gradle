@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        exclusiveContent {
+            forRepository { maven { url = uri('https://maven.minecraftforge.net') } }
+            filter { includeGroupAndSubgroups('net.minecraftforge') }
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+
+rootProject.name = 'Afterself-1.21'
+include('forge')
+include('neoforge')

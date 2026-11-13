@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+    // NeoForge 1.20.1 test only: plugin 2.0.77 crashes when no Forge version is set.
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'net.neoforged.moddev.legacyforge'
+                    && gradle.startParameter.projectProperties.containsKey('afterselfNeoLegacy')) {
+                useVersion '2.0.148'
+            }
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+
+rootProject.name = 'Afterself-1.20.1'

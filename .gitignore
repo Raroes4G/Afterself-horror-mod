@@ -1,0 +1,42 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# Dev clients and servers started by Gradle or the test harness
+run/
+runs/
+
+# Built jars: they go on GitHub Releases and Modrinth, not in the repository
+jars/
+
+# Test harness output (logs and screenshots of each test run)
+testharness/logs/
+testharness/shots/
+
+# Node scripts in testharness/
+node_modules/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# Logs and JVM crash files
+*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# The Gradle wrappers must stay, so anyone can build without installing Gradle
+!gradle/wrapper/gradle-wrapper.jar

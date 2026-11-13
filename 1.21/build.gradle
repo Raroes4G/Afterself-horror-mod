@@ -1,0 +1,21 @@
+plugins {
+    id 'base'
+    id 'net.neoforged.moddev' version '2.0.49-beta' apply false
+}
+
+// One jar for Forge and NeoForge on 1.21 and 1.21.1: both run on official names at runtime, so the
+// shared classes are taken once from NeoForge and only the Forge entry classes come from the Forge jar.
+tasks.register('mergedJar', Jar) {
+    dependsOn ':forge:jar', ':neoforge:jar'
+    archiveFileName = "afterself-1.21-1.21.1-forge-neoforge-${mod_version}.jar"
+    destinationDirectory = layout.buildDirectory.dir('libs')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    def neoJar = project(':neoforge').tasks.named('jar').flatMap { it.archiveFile }
+    def forgeJar = project(':forge').tasks.named('jar').flatMap { it.archiveFile }
+    from({ zipTree(neoJar) }) { exclude 'META-INF/MANIFEST.MF' }
+    from({ zipTree(forgeJar) }) {
+        include 'com/afterself/forge/**'
+        include 'META-INF/mods.toml'
+    }
+}
